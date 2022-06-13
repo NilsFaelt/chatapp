@@ -1,0 +1,35 @@
+.container{
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+.title{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 2.6vw;
+    font-family: 'Arvo', serif;
+    
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(194, 246, 250);
+    box-shadow: 2px 2px 2px;
+    padding: 5vw;
+}
+.label{
+    margin-bottom: 1vh;
+    margin: 0 auto;
+    margin-bottom: 1vh;
+    font-family: 'Arvo', serif;
+}
+.input{
+    margin-bottom: 2vh;
+    border: 1px solid black;
+    height: 3vh;
+    border-radius: 3px;
+}

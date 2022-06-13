@@ -1,0 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: rgb(250, 233, 186);
+}
+button{
+  width: 15vw;
+  height: 5vh;
+  border-radius: 5px;
+  margin: 0 auto;
+  border: solid 1px black;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px;
+  font-family: 'Arvo', serif;
+}
+button:hover{
+  background-color: rgb(249, 230, 134);
+}
