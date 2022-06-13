@@ -28,6 +28,7 @@
     font-family: 'Arvo', serif;
 }
 .input{
+    width: 30vw;
     margin-bottom: 2vh;
     border: 1px solid black;
     height: 3vh;
