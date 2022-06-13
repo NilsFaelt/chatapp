@@ -8,7 +8,7 @@
 .title{
     margin-top: 5vh;
     margin-bottom: 5vh;
-    font-size: 2.6vw;
+    font-size:calc(12px + 1.2vw);
     font-family: 'Arvo', serif;
     
 }
@@ -28,6 +28,7 @@
     font-family: 'Arvo', serif;
 }
 .input{
+    margin:  0 auto;
     width: 30vw;
     margin-bottom: 2vh;
     border: 1px solid black;
