@@ -7,7 +7,7 @@ const ChatRoom = () => {
       <div className={Styles.messaegAndUserContainer}>
         <div className={Styles.messeageContainer}>
           <div className={Styles.displayMessage}></div>
-          <input
+          <textarea
             placeholder='Write messeage....'
             className={Styles.input}
             type='text'
