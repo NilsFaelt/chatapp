@@ -16,7 +16,7 @@ const Login = () => {
         <Link className={Styles.link} to={"/createuser"}>
           Create user?
         </Link>
-        <button>Create</button>
+        <button>Login</button>
       </form>
     </div>
   );

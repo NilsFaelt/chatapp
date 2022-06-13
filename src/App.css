@@ -6,6 +6,7 @@ body{
   background-color: rgb(250, 233, 186);
 }
 button{
+  font-size:calc(8px + 0.3vw);
   width: 15vw;
   height: 5vh;
   border-radius: 5px;

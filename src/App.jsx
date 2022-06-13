@@ -17,8 +17,8 @@ function App() {
         <Route path='/search' element={<Search />} />
         <Route path='/createuser' element={<CreateUser />} />
       </Routes>
-
-      <Footer />
+      {/* 
+      <Footer /> */}
     </div>
   );
 }
