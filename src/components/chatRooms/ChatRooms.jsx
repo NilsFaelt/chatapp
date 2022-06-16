@@ -8,7 +8,7 @@ const socket = io.connect("http://localhost:4001/");
 const ChatRooms = () => {
   const [choosenRooom, setChoosenRoom] = useState("");
   const [rooms, setRoooms] = useState([]);
-  console.log(choosenRooom);
+
 
   const addRoom = () => {
     const room = prompt("Add roomname");
