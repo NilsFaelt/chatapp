@@ -46,7 +46,7 @@
     text-align: center;
     width: 10vw;
     height: 42vh;
-    margin-right: 5vw;
+    margin-right: 10vw;
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -58,7 +58,7 @@
     border: 1px solid black;
     border-radius: 5px;
     margin-bottom: 2vh;
-    font-size: 1.4vw;
+    font-size: 1vw;
 }
 .input::placeholder{
     font-size:calc(2px + 1vw);

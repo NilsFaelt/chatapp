@@ -8,8 +8,8 @@ const ChatRooms = () => {
 
   const addRoom = () => {
     const room = prompt("Add roomname");
-    if (room.length > 12) {
-      alert("max length is 12 charachters, please try again");
+    if (room.length > 12 || room.length < 1) {
+      alert("name must be between 1 and  12 charachters, please try again");
     } else {
       setRoooms([...rooms, room]);
     }
@@ -23,7 +23,14 @@ const ChatRooms = () => {
         <div className={Styles.rooms}>
           {rooms.length > 0 ? (
             rooms.map((room) => {
-              return <h4 className={Styles.roomTitle}>{room}</h4>;
+              return (
+                <h4
+                  onClick={() => console.log(room)}
+                  className={Styles.roomTitle}
+                >
+                  {room}
+                </h4>
+              );
             })
           ) : (
             <p className={Styles.userTitle}> No active rooms at the moment</p>
