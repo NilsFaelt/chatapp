@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
 import Styles from "./chatRoom.module.css";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:4001/");
 
 const ChatRoom = ({ choosenRooom }) => {
+  const [recivedMessage, setRecivedMessage] = useState("");
+  const [messageInput, setMessageInput] = useState("");
+  const sendMessage = () => {
+    socket.emit("send_message", {
+      message: messageInput,
+      room: choosenRooom,
+    });
+    setMessageInput("");
+  };
+
+  useEffect(() => {
+    socket.emit("join_room", choosenRooom);
+    socket.on("recive_message", (data) => {
+      setRecivedMessage(data.message);
+      console.log(data);
+    });
+  }, [socket, choosenRooom]);
+
   return (
     <div className={Styles.container}>
       <h3 className={Styles.title}>
@@ -10,6 +32,8 @@ const ChatRoom = ({ choosenRooom }) => {
         <div className={Styles.messeageContainer}>
           <div className={Styles.displayMessage}></div>
           <textarea
+            value={messageInput}
+            onChange={(e) => setMessageInput(e.target.value)}
             placeholder='Write messeage....'
             className={Styles.input}
             type='text'
@@ -19,7 +43,7 @@ const ChatRoom = ({ choosenRooom }) => {
           <h4 className={Styles.userTitle}>Active users</h4>
         </section>
       </div>
-      <button>Send</button>
+      <button onClick={sendMessage}>Send</button>
     </div>
   );
 };

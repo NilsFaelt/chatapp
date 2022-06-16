@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatRoom from "../chatRoom/ChatRoom";
 import Styles from "./chatRooms.module.css";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:4001/");
 
 const ChatRooms = () => {
   const [choosenRooom, setChoosenRoom] = useState("");
   const [rooms, setRoooms] = useState([]);
-  console.log(rooms);
   console.log(choosenRooom);
+
   const addRoom = () => {
     const room = prompt("Add roomname");
     if (room.length > 12 || room.length < 1) {
@@ -16,6 +19,8 @@ const ChatRooms = () => {
     }
   };
   const chooseRoom = (room) => {
+    socket.emit("join_room", room);
+    console.log(room, "join roooom");
     setChoosenRoom(room);
   };
 
