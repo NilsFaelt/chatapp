@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import io from "socket.io-client";
 import "./App.css";
 import ChatRooms from "./components/chatRooms/ChatRooms";
 import CreateUser from "./components/createuser/CreateUser";
@@ -6,6 +7,8 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/Header";
 import Login from "./components/login/login";
 import Search from "./components/search/Search";
+
+const socket = io.connect("http://localhost:4001/");
 
 function App() {
   return (
