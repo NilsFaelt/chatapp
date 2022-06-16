@@ -1,9 +1,11 @@
 import Styles from "./chatRoom.module.css";
-const room = "The Room";
-const ChatRoom = () => {
+
+const ChatRoom = ({ choosenRooom }) => {
   return (
     <div className={Styles.container}>
-      <h3 className={Styles.title}>{room}</h3>
+      <h3 className={Styles.title}>
+        {choosenRooom ? choosenRooom : "No room choosen"}
+      </h3>
       <div className={Styles.messaegAndUserContainer}>
         <div className={Styles.messeageContainer}>
           <div className={Styles.displayMessage}></div>

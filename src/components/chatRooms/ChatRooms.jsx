@@ -3,9 +3,10 @@ import ChatRoom from "../chatRoom/ChatRoom";
 import Styles from "./chatRooms.module.css";
 
 const ChatRooms = () => {
+  const [choosenRooom, setChoosenRoom] = useState("");
   const [rooms, setRoooms] = useState([]);
   console.log(rooms);
-
+  console.log(choosenRooom);
   const addRoom = () => {
     const room = prompt("Add roomname");
     if (room.length > 12 || room.length < 1) {
@@ -14,10 +15,13 @@ const ChatRooms = () => {
       setRoooms([...rooms, room]);
     }
   };
+  const chooseRoom = (room) => {
+    setChoosenRoom(room);
+  };
 
   return (
     <main className={Styles.container}>
-      <ChatRoom />
+      <ChatRoom choosenRooom={choosenRooom} />
       <section className={Styles.chatRoomContainer}>
         <h3 className={Styles.roomsTitle}>Rooms</h3>
         <div className={Styles.rooms}>
@@ -25,7 +29,7 @@ const ChatRooms = () => {
             rooms.map((room) => {
               return (
                 <h4
-                  onClick={() => console.log(room)}
+                  onClick={() => chooseRoom(room)}
                   className={Styles.roomTitle}
                 >
                   {room}
