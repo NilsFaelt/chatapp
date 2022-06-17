@@ -5,7 +5,7 @@ import { getTime } from "../../timeFunc";
 
 const socket = io.connect("http://localhost:4001/");
 
-const ChatRoom = ({ choosenRooom, user }) => {
+const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
   const [recivedMessage, setRecivedMessage] = useState("");
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
@@ -30,6 +30,7 @@ const ChatRoom = ({ choosenRooom, user }) => {
   };
 
   const leaveRoom = () => {
+    setChoosenRoom("");
     socket.emit("leave_room", { choosenRooom: choosenRooom, user: user });
     console.log("levaing");
   };

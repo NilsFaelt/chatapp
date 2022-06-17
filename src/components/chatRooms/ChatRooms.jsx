@@ -28,7 +28,11 @@ const ChatRooms = ({ user }) => {
 
   return (
     <main className={Styles.container}>
-      <ChatRoom choosenRooom={choosenRooom} user={user} />
+      <ChatRoom
+        choosenRooom={choosenRooom}
+        user={user}
+        setChoosenRoom={setChoosenRoom}
+      />
       <section className={Styles.chatRoomContainer}>
         <h3 className={Styles.roomsTitle}>Rooms</h3>
         <div className={Styles.rooms}>
