@@ -14,7 +14,7 @@ const Login = ({ setUser, user }) => {
       <h3 className={Styles.title}>Login</h3>
       <form type='submit' className={Styles.form}>
         <label className={Styles.label} htmlFor=''>
-          {/* Username: {dummyLogin ? dummyLogin : "no user"} */}
+          LOGIN:
         </label>
         <input
           value={userInput}

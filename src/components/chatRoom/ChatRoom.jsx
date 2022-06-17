@@ -27,7 +27,7 @@ const ChatRoom = ({ choosenRooom, user }) => {
   };
 
   useEffect(() => {
-    socket.emit("join_room", choosenRooom);
+    socket.emit("join_room", { choosenRooom: choosenRooom, user: user });
     socket.on("recive_message", (data) => {
       setRecivedMessage(data.message);
       setRecivedFromUser(data.user);
@@ -36,10 +36,23 @@ const ChatRoom = ({ choosenRooom, user }) => {
 
   return (
     <div className={Styles.container}>
-      <h3 className={Styles.title}>
-        {choosenRooom ? choosenRooom : "No room choosen"}
-      </h3>
-      <p className={Styles.username}>Username: {user}</p>
+      <div className={Styles.wrapperRoomAndTitle}>
+        <h3 className={Styles.title}>
+          {choosenRooom ? choosenRooom : "No room choosen"}
+        </h3>
+        <p className={Styles.username}>Username: {user}</p>
+        <button
+          style={{
+            backgroundColor: "red",
+            marginBottom: "2vh",
+            width: "10vw",
+            height: "3vh",
+          }}
+        >
+          Delete room
+        </button>
+      </div>
+
       <div className={Styles.messaegAndUserContainer}>
         <div className={Styles.messeageContainer}>
           <div className={Styles.displayMessage}>
@@ -67,6 +80,16 @@ const ChatRoom = ({ choosenRooom, user }) => {
         </section>
       </div>
       <button onClick={sendMessage}>Send</button>
+      <button
+        style={{
+          width: "8vw",
+          height: "3vh",
+          marginTop: "-4vh",
+          marginLeft: "40vw",
+        }}
+      >
+        Leave room
+      </button>
     </div>
   );
 };
