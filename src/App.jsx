@@ -15,7 +15,7 @@ function App() {
   const [user, setUser] = useState("No name");
   return (
     <div className='App'>
-      <Header />
+      <Header user={user} />
       <Routes>
         <Route
           path='/login'

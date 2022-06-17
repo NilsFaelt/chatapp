@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     margin: 0 auto;
     width: 100vw;
@@ -15,8 +15,14 @@
     top: 1.5vh;
     cursor: pointer;
 }
+.userTitle{
+    position: absolute;
+    text-decoration: underline yellow;
+    font-family: 'Arvo', serif;
+    margin-top: 1vh;
+    right: 1vw
+}
 .link{
     color: black;
     margin-bottom: 5vh;
-
 }
