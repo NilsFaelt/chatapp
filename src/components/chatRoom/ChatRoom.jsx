@@ -9,6 +9,7 @@ const ChatRoom = ({ choosenRooom, user }) => {
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
   console.log(user);
+
   const sendMessage = () => {
     if (user === "No name") {
       alert("please login to send messages");
@@ -24,6 +25,11 @@ const ChatRoom = ({ choosenRooom, user }) => {
       });
     }
     setMessageInput("");
+  };
+
+  const leaveRoom = () => {
+    socket.emit("leave_room", { choosenRooom: choosenRooom, user: user });
+    console.log("levaing");
   };
 
   useEffect(() => {
@@ -81,6 +87,7 @@ const ChatRoom = ({ choosenRooom, user }) => {
       </div>
       <button onClick={sendMessage}>Send</button>
       <button
+        onClick={() => leaveRoom()}
         style={{
           width: "8vw",
           height: "3vh",
