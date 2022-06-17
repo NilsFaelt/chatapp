@@ -8,13 +8,21 @@ const ChatRoom = ({ choosenRooom, user }) => {
   const [recivedMessage, setRecivedMessage] = useState("");
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
-  console.log(recivedMessage);
+  console.log(user);
   const sendMessage = () => {
-    socket.emit("send_message", {
-      message: messageInput,
-      room: choosenRooom,
-      user: user,
-    });
+    if (user === "No name") {
+      alert("please login to send messages");
+    } else if (messageInput === "") {
+      alert("pleasee add message before send");
+    } else if (!choosenRooom) {
+      alert("you have to join room to send messages");
+    } else {
+      socket.emit("send_message", {
+        message: messageInput,
+        room: choosenRooom,
+        user: user,
+      });
+    }
     setMessageInput("");
   };
 
@@ -38,12 +46,12 @@ const ChatRoom = ({ choosenRooom, user }) => {
             {recivedFromUser ? (
               <p className={Styles.fromUser}>{recivedFromUser} Says:</p>
             ) : (
-              "no user"
+              ""
             )}
             {recivedMessage ? (
               <p style={{ marginLeft: "0.5vw" }}>{recivedMessage}</p>
             ) : (
-              "no message"
+              "no messages..."
             )}
           </div>
           <textarea
