@@ -5,10 +5,9 @@ import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:4001/");
 
-const ChatRooms = () => {
+const ChatRooms = ({ user }) => {
   const [choosenRooom, setChoosenRoom] = useState("");
   const [rooms, setRoooms] = useState([]);
-
 
   const addRoom = () => {
     const room = prompt("Add roomname");
@@ -26,7 +25,7 @@ const ChatRooms = () => {
 
   return (
     <main className={Styles.container}>
-      <ChatRoom choosenRooom={choosenRooom} />
+      <ChatRoom choosenRooom={choosenRooom} user={user} />
       <section className={Styles.chatRoomContainer}>
         <h3 className={Styles.roomsTitle}>Rooms</h3>
         <div className={Styles.rooms}>
@@ -47,6 +46,7 @@ const ChatRooms = () => {
         </div>
         <button
           style={{
+            marginTop: "2vh",
             width: "10vw",
           }}
           onClick={addRoom}

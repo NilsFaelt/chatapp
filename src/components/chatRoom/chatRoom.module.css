@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 60vw;
-    height: 60vh;
+    height: 63vh;
     margin-top: 12vh;
     margin-left: 12vw;
     border-radius: 5px;
@@ -12,7 +12,7 @@
 }
 .title{
     margin-top: 1vh;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     font-size:calc(12px + 1.2vw);
     font-family: 'Arvo', serif;
     text-decoration: underline;
@@ -23,6 +23,20 @@
     font-size:calc(12px + 0.2vw);
     font-family: 'Arvo', serif;
     text-decoration: underline;
+}
+.fromUser{
+    font-family: 'Arvo', serif;
+    font-size: 1vw;
+    text-decoration: underline;
+    margin-bottom: 0.1vh;
+    margin-top: 1vh;
+    margin-left: 1vh;
+}
+.username{
+    font-family: 'Arvo', serif;
+    text-decoration: underline;
+    margin-bottom: 0.5vh;
+
 }
 .messaegAndUserContainer{
     display:  flex;

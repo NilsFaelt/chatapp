@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import io from "socket.io-client";
 import "./App.css";
@@ -11,12 +12,16 @@ import Search from "./components/search/Search";
 const socket = io.connect("http://localhost:4001/");
 
 function App() {
+  const [user, setUser] = useState("No name");
   return (
     <div className='App'>
       <Header />
       <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/chatrooms' element={<ChatRooms />} />
+        <Route
+          path='/login'
+          element={<Login setUser={setUser} user={user} />}
+        />
+        <Route path='/chatrooms' element={<ChatRooms user={user} />} />
         <Route path='/search' element={<Search />} />
         <Route path='/createuser' element={<CreateUser />} />
       </Routes>
