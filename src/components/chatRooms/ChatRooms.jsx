@@ -11,7 +11,10 @@ const ChatRooms = ({ user }) => {
 
   const addRoom = () => {
     const room = prompt("Add roomname");
-    if (room.length > 12 || room.length < 1) {
+    const checkIfRoom = rooms.find((existingRoom) => existingRoom === room);
+    if (checkIfRoom) {
+      alert("room already exists, choose different name");
+    } else if (room.length > 12 || room.length < 1) {
       alert("name must be between 1 and  12 charachters, please try again");
     } else {
       setRoooms([...rooms, room]);
