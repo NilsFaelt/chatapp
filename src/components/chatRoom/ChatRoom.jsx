@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Styles from "./chatRoom.module.css";
 import io from "socket.io-client";
+import { getTime } from "../../timeFunc";
 
 const socket = io.connect("http://localhost:4001/");
 
@@ -8,7 +9,8 @@ const ChatRoom = ({ choosenRooom, user }) => {
   const [recivedMessage, setRecivedMessage] = useState("");
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
-  console.log(user);
+  const [date, setDate] = useState(getTime());
+  console.log(date);
 
   const sendMessage = () => {
     if (user === "No name") {
@@ -68,10 +70,13 @@ const ChatRoom = ({ choosenRooom, user }) => {
               ""
             )}
             {recivedMessage ? (
-              <p style={{ marginLeft: "0.5vw" }}>{recivedMessage}</p>
+              <p style={{ marginLeft: "0.5vw", fontSize: "1vw" }}>
+                {recivedMessage}
+              </p>
             ) : (
               "no messages..."
             )}
+            {recivedMessage ? <p className={Styles.date}>{date}</p> : ""}
           </div>
           <textarea
             value={messageInput}
