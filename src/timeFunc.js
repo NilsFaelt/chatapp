@@ -7,3 +7,5 @@ export const getTime = () => {
   const dateTime = date + " " + time;
   return dateTime;
 };
+
+//lösning jag hittade på internet, inte min egna kod
