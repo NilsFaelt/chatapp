@@ -46,9 +46,11 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
   return (
     <div className={Styles.container}>
       <div className={Styles.wrapperRoomAndTitle}>
-        <h3 className={Styles.title}>
-          {choosenRooom ? choosenRooom : "No room choosen"}
-        </h3>
+        {choosenRooom ? (
+          <h3 className={Styles.title}>Room: {choosenRooom}</h3>
+        ) : (
+          <h3 className={Styles.title}>No choosen rooom</h3>
+        )}
         <p className={Styles.username}>Username: {user}</p>
         <button
           style={{
@@ -79,6 +81,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
             )}
             {recivedMessage ? <p className={Styles.date}>{date}</p> : ""}
           </div>
+
           <textarea
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
@@ -94,6 +97,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
       <button onClick={sendMessage}>Send</button>
       <button
         onClick={() => leaveRoom()}
+        type='submit'
         style={{
           width: "8vw",
           height: "3vh",
