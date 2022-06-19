@@ -10,13 +10,10 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [date, setDate] = useState(getTime());
-  console.log(date);
 
   const sendMessage = () => {
     if (user === "No name") {
       alert("please login to send messages");
-    } else if (messageInput === "") {
-      alert("pleasee add message before send");
     } else if (!choosenRooom) {
       alert("you have to join room to send messages");
     } else {
@@ -47,7 +44,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
     <div className={Styles.container}>
       <div className={Styles.wrapperRoomAndTitle}>
         {choosenRooom ? (
-          <h3 className={Styles.title}>Room: {choosenRooom}</h3>
+          <h3>Room: {choosenRooom}</h3>
         ) : (
           <h3 className={Styles.title}>No choosen rooom</h3>
         )}
@@ -94,7 +91,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
           <h4 className={Styles.userTitle}>Active users</h4>
         </section>
       </div>
-      <button onClick={sendMessage}>Send</button>
+      <button onClick={() => sendMessage()}>Send</button>
       <button
         onClick={() => leaveRoom()}
         type='submit'
