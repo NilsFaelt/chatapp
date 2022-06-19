@@ -18,6 +18,8 @@ const ChatRooms = ({ user }) => {
       alert("name must be between 1 and  12 charachters, please try again");
     } else {
       setRoooms([...rooms, room]);
+      socket.emit("join_room", room);
+      setChoosenRoom(room);
     }
   };
   const chooseRoom = (room) => {
