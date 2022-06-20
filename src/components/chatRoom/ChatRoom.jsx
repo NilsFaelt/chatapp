@@ -9,7 +9,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
   const [recivedMessage, setRecivedMessage] = useState("");
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
-  const [date, setDate] = useState(getTime());
+  const [date, setDate] = useState();
   const [messageAlert, setMessageAlert] = useState(false);
 
   const sendMessage = () => {
@@ -18,6 +18,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
     } else if (!choosenRooom) {
       alert("you have to join room to send messages");
     } else {
+      setDate(getTime());
       socket.emit("send_message", {
         message: messageInput,
         room: choosenRooom,
