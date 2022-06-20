@@ -52,6 +52,10 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
     });
   }, [socket, choosenRooom]);
 
+  const deleteRoom = () => {
+    socket.emit("delete_room", choosenRooom);
+  };
+
   return (
     <div className={Styles.container}>
       <div className={Styles.wrapperRoomAndTitle}>
@@ -63,8 +67,8 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
         <p className={Styles.username}>Username: {user}</p>
         {choosenRooom ? (
           <button
+            onClick={() => deleteRoom()}
             style={{
-              backgroundColor: "red",
               marginBottom: "2vh",
               width: "10vw",
               height: "3vh",
