@@ -84,7 +84,21 @@
     margin-bottom: 2vh;
     font-size: 1vw;
 }
+.alertInput{
+    width: 35vw;
+    height: 8vh;
+    background-color: rgb(246, 86, 86);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+    font-size: 1vw;
+}
 .input::placeholder{
+    font-size:calc(2px + 1vw);
+    padding-left: 1vw;
+    padding-top: 1vh;
+}
+.alertInput::placeholder{
     font-size:calc(2px + 1vw);
     padding-left: 1vw;
     padding-top: 1vh;

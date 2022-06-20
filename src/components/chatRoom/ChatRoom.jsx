@@ -10,6 +10,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [date, setDate] = useState(getTime());
+  const [messageAlert, setMessageAlert] = useState(false);
 
   const sendMessage = () => {
     if (user === "No name") {
@@ -22,9 +23,18 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
         room: choosenRooom,
         user: user,
       });
+      if (messageInput === "") {
+        setMessageAlert(true);
+      }
     }
     setMessageInput("");
   };
+
+  if (messageAlert) {
+    setTimeout(() => {
+      setMessageAlert(false);
+    }, 100);
+  }
 
   const leaveRoom = () => {
     setChoosenRoom("");
@@ -93,7 +103,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
             placeholder='Write messeage....'
-            className={Styles.input}
+            className={messageAlert ? Styles.alertInput : Styles.input}
             type='text'
           />
         </div>
