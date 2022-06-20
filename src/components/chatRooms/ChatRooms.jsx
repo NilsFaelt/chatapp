@@ -44,6 +44,8 @@ const ChatRooms = ({ user }) => {
   return (
     <main className={Styles.container}>
       <ChatRoom
+        setActivate={setActivate}
+        activate={activate}
         choosenRooom={choosenRooom}
         user={user}
         setChoosenRoom={setChoosenRoom}

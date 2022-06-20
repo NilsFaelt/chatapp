@@ -5,7 +5,13 @@ import { getTime } from "../../timeFunc";
 
 const socket = io.connect("http://localhost:4001/");
 
-const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
+const ChatRoom = ({
+  choosenRooom,
+  user,
+  setChoosenRoom,
+  setActivate,
+  activate,
+}) => {
   const [recivedMessage, setRecivedMessage] = useState("");
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
@@ -53,7 +59,12 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
   }, [socket, choosenRooom]);
 
   const deleteRoom = () => {
+    const confirmed = confirm(`Sure you wanna delete room: ${choosenRooom}`);
+    if (!confirmed) {
+      return;
+    }
     socket.emit("delete_room", choosenRooom);
+    setActivate(!activate);
   };
 
   return (
