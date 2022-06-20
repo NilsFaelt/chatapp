@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import "./App.css";
 import ChatRooms from "./components/chatRooms/ChatRooms";
@@ -12,6 +13,10 @@ import Search from "./components/search/Search";
 const socket = io.connect("http://localhost:4001/");
 
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/chatrooms");
+  }, []);
   const [user, setUser] = useState("No name");
   return (
     <div className='App'>
