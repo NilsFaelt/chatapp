@@ -17,7 +17,10 @@
 }
 .userTitle{
     position: absolute;
-    text-decoration: underline yellow;
+    background-color: rgb(255, 255, 255);
+    padding: 0.3vw;
+    border: 1px solid black;
+    border-radius: 5px;
     font-family: 'Arvo', serif;
     margin-top: 1vh;
     right: 1vw
