@@ -44,7 +44,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
     <div className={Styles.container}>
       <div className={Styles.wrapperRoomAndTitle}>
         {choosenRooom ? (
-          <h3>Room: {choosenRooom}</h3>
+          <h3 className={Styles.title}>Room: {choosenRooom}</h3>
         ) : (
           <h3 className={Styles.title}>No choosen rooom</h3>
         )}
