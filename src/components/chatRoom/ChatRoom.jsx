@@ -49,16 +49,26 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
           <h3 className={Styles.title}>No choosen rooom</h3>
         )}
         <p className={Styles.username}>Username: {user}</p>
-        <button
-          style={{
-            backgroundColor: "red",
-            marginBottom: "2vh",
-            width: "10vw",
-            height: "3vh",
-          }}
-        >
-          Delete room
-        </button>
+        {choosenRooom ? (
+          <button
+            style={{
+              backgroundColor: "red",
+              marginBottom: "2vh",
+              width: "10vw",
+              height: "3vh",
+            }}
+          >
+            Delete room
+          </button>
+        ) : (
+          <p
+            style={{
+              marginBottom: "2vh",
+              width: "10vw",
+              height: "3vh",
+            }}
+          ></p>
+        )}
       </div>
 
       <div className={Styles.messaegAndUserContainer}>
