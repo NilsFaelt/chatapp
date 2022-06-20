@@ -22,6 +22,7 @@ const ChatRoom = ({ choosenRooom, user, setChoosenRoom }) => {
         message: messageInput,
         room: choosenRooom,
         user: user,
+        date: date,
       });
       if (messageInput === "") {
         setMessageAlert(true);
