@@ -49,6 +49,7 @@ const ChatRoom = ({
   }
 
   const leaveRoom = () => {
+    setRecivedMessage("");
     setChoosenRoom("");
     socket.emit("leave_room", { choosenRooom: choosenRooom, user: user });
     console.log("levaing");
