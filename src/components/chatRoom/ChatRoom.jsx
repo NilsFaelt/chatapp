@@ -11,13 +11,13 @@ const ChatRoom = ({
   setChoosenRoom,
   setActivate,
   activate,
+  activateTitle,
 }) => {
   const [recivedMessage, setRecivedMessage] = useState([]);
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [date, setDate] = useState();
   const [messageAlert, setMessageAlert] = useState(false);
-  console.log(recivedMessage, "revciveier");
 
   useEffect(() => {
     setDate(getTime());
@@ -61,6 +61,7 @@ const ChatRoom = ({
     if (!confirmed) {
       return;
     }
+    setChoosenRoom("");
     setRecivedMessage([]);
     socket.emit("delete_room", choosenRooom);
     setActivate(!activate);
@@ -80,7 +81,10 @@ const ChatRoom = ({
     <div className={Styles.container}>
       <div className={Styles.wrapperRoomAndTitle}>
         {choosenRooom ? (
-          <h3 className={Styles.title}>Room: {choosenRooom}</h3>
+          <h3 className={activateTitle ? Styles.title : Styles.alertTitle}>
+            {" "}
+            {choosenRooom}
+          </h3>
         ) : (
           <h3 className={Styles.title}>No choosen rooom</h3>
         )}

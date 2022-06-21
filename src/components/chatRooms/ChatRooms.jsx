@@ -9,6 +9,7 @@ const ChatRooms = ({ user }) => {
   const [choosenRooom, setChoosenRoom] = useState("");
   const [rooms, setRoooms] = useState([]);
   const [activate, setActivate] = useState(false);
+  const [activateTitle, setActivateTitle] = useState(true);
 
   const addRoom = () => {
     setActivate(!activate);
@@ -29,10 +30,17 @@ const ChatRooms = ({ user }) => {
     }
   };
   const chooseRoom = (room) => {
+    setActivateTitle(false);
     socket.emit("join_room", room);
     console.log(room, "join roooom");
     setChoosenRoom(room);
   };
+
+  if (!activateTitle) {
+    setTimeout(() => {
+      setActivateTitle(true);
+    }, 2000);
+  }
 
   useEffect(() => {
     socket.emit("get_rooms");
@@ -44,6 +52,7 @@ const ChatRooms = ({ user }) => {
   return (
     <main className={Styles.container}>
       <ChatRoom
+        activateTitle={activateTitle}
         setActivate={setActivate}
         activate={activate}
         choosenRooom={choosenRooom}
