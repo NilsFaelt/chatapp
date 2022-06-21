@@ -65,6 +65,7 @@
     border: 1px solid black;
     border-radius: 5px;
     margin-bottom: 4vh;
+    overflow: scroll;
 }
 .displayUsers{
     text-align: center;
@@ -103,8 +104,19 @@
     padding-left: 1vw;
     padding-top: 1vh;
 }
+.sentFromUser{
+    text-decoration: underline;
+    margin-left: 0.5vw;
+    font-size: 1vw;
+    
+}
+.tex{
+    font-size: 0.8vw;
+    margin-left: 0.5vw;
+} 
 .date{
     font-size: 0.7vw;
     margin-left: 0.5vw;
     margin-top: 0.3vh;
+    margin-bottom: 0.8vh;
 }

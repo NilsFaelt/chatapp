@@ -10,7 +10,11 @@ const Header = ({ user }) => {
         <ChatAlt2Icon className={Styles.chatIcon} />
       </Link>
       <Navbar />
-      {user ? <h3 className={Styles.userTitle}>UserName: {user}</h3> : ""}
+      {user ? (
+        <h3 className={Styles.userTitle}>UserName: {user}</h3>
+      ) : (
+        <h3 className={Styles.userTitle}>UserName: No User</h3>
+      )}
     </header>
   );
 };

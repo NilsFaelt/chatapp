@@ -1,8 +1,10 @@
 import Styles from "./login.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 const Login = ({ setUser, user }) => {
   const [userInput, setUserInput] = useState("");
+
   const loginUser = (e) => {
     e.preventDefault();
     setUser(userInput);

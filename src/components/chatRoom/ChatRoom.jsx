@@ -12,11 +12,16 @@ const ChatRoom = ({
   setActivate,
   activate,
 }) => {
-  const [recivedMessage, setRecivedMessage] = useState("");
+  const [recivedMessage, setRecivedMessage] = useState([]);
   const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [date, setDate] = useState();
   const [messageAlert, setMessageAlert] = useState(false);
+  console.log(recivedMessage, "revciveier");
+
+  useEffect(() => {
+    setDate(getTime());
+  }, [messageInput]);
 
   const sendMessage = () => {
     if (user === "No name") {
@@ -24,7 +29,6 @@ const ChatRoom = ({
     } else if (!choosenRooom) {
       alert("you have to join room to send messages");
     } else {
-      setDate(getTime());
       socket.emit("send_message", {
         message: messageInput,
         room: choosenRooom,
@@ -50,22 +54,27 @@ const ChatRoom = ({
     console.log("levaing");
   };
 
-  useEffect(() => {
-    socket.emit("join_room", { choosenRooom: choosenRooom, user: user });
-    socket.on("recive_message", (data) => {
-      setRecivedMessage(data.message);
-      setRecivedFromUser(data.user);
-    });
-  }, [socket, choosenRooom]);
-
   const deleteRoom = () => {
-    const confirmed = confirm(`Sure you wanna delete room: ${choosenRooom}`);
+    const confirmed = confirm(
+      `Sure you wanna delete room: ${choosenRooom}, all messages will be deleted`
+    );
     if (!confirmed) {
       return;
     }
+    setRecivedMessage([]);
     socket.emit("delete_room", choosenRooom);
     setActivate(!activate);
   };
+
+  useEffect(() => {
+    socket.emit("join_room", { choosenRooom: choosenRooom, user: user });
+    console.log(choosenRooom);
+    socket.on("recive_message", (data) => {
+      setRecivedMessage(data);
+      setRecivedFromUser(data.user);
+    });
+    console.log("insie effects");
+  }, [socket, choosenRooom]);
 
   return (
     <div className={Styles.container}>
@@ -106,14 +115,19 @@ const ChatRoom = ({
             ) : (
               ""
             )}
-            {recivedMessage ? (
-              <p style={{ marginLeft: "0.5vw", fontSize: "1vw" }}>
-                {recivedMessage}
-              </p>
-            ) : (
-              "no messages..."
-            )}
-            {recivedMessage ? <p className={Styles.date}>{date}</p> : ""}
+            {recivedMessage
+              ? recivedMessage.map((message) => {
+                  return (
+                    <div>
+                      <h3 className={Styles.sentFromUser}>
+                        {message.user} says
+                      </h3>
+                      <h3 className={Styles.tex}>{message.message}</h3>
+                      <p className={Styles.date}>{message.date}</p>
+                    </div>
+                  );
+                })
+              : "no messages..."}
           </div>
 
           <textarea
