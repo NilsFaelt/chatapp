@@ -36,12 +36,11 @@ const ChatRooms = ({ user }) => {
   };
 
   const chooseRoom = (room) => {
-    setActivateTitle(false);
-    socket.emit("join_room", room);
-    console.log(room, "join roooom");
-
-    setChoosenRoom(room);
     console.log(room);
+    setActivateTitle(false);
+    setChoosenRoom(room);
+    socket.emit("join_room", room);
+    socket.emit("back_to_room", { room: room });
   };
 
   if (!activateTitle) {
@@ -61,6 +60,7 @@ const ChatRooms = ({ user }) => {
     <main onMouseOver={updateRooms} className={Styles.container}>
       {choosenRooom ? (
         <ChatRoom
+          chooseRoom={chooseRoom}
           activateTitle={activateTitle}
           setActivate={setActivate}
           activate={activate}

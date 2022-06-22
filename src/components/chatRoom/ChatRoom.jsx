@@ -13,6 +13,7 @@ const ChatRoom = ({
   setActivate,
   activate,
   activateTitle,
+  chooseRoom,
 }) => {
   const navigate = useNavigate();
   const [recivedMessage, setRecivedMessage] = useState([]);
@@ -36,7 +37,9 @@ const ChatRoom = ({
         user: user,
         date: date,
       };
-      setRecivedMessage([...recivedMessage, newMessage]);
+      if (newMessage.message !== "") {
+        setRecivedMessage([...recivedMessage, newMessage]);
+      }
       socket.emit("send_message", {
         message: messageInput,
         room: choosenRooom,
@@ -84,7 +87,10 @@ const ChatRoom = ({
     socket.on("recive_message", (data) => {
       setRecivedMessage(data);
     });
-  }, [socket, choosenRooom]);
+    socket.on("back_to_room", (data) => {
+      setRecivedMessage(data);
+    });
+  }, [socket, choosenRooom, chooseRoom]);
 
   return (
     <div className={Styles.container}>
