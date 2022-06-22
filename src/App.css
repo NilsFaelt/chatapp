@@ -19,3 +19,17 @@ button{
 button:hover{
   background-color: rgb(249, 230, 134);
 }
+.buttonWarning{
+  font-size:calc(8px + 0.3vw);
+  width: 15vw;
+  height: 5vh;
+  border-radius: 5px;
+  margin: 0 auto;
+  border: solid 1px black;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px;
+  font-family: 'Arvo', serif;
+}
+.buttonWarning:hover{
+  background-color: rgb(250, 75, 72);
+}

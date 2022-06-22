@@ -41,12 +41,6 @@ const ChatRooms = ({ user }) => {
     console.log(room, "join roooom");
 
     setChoosenRoom(room);
-    // socket.emit("send_message", {
-    //   message: "Welcome",
-    //   room: "roo2",
-    //   user: "Admin",
-    //   date: "",
-    // });
     console.log(room);
   };
 

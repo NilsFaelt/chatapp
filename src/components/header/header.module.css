@@ -17,13 +17,23 @@
 }
 .userTitle{
     position: absolute;
+    height: 7vh;
+    width: 10vw;
+    font-size: 1.1vw;
     background-color: rgb(255, 255, 255);
     padding: 0.3vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
     border: 1px solid black;
     border-radius: 5px;
     font-family: 'Arvo', serif;
-    margin-top: 1vh;
-    right: 1vw
+    margin-top: 1.6vh;
+    right: 4vw;
+    text-align: center;
+}
+.userName{
+   text-decoration:  underline ;
+   font-size: 1.4vw;
 }
 .link{
     color: black;

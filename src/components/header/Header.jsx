@@ -11,7 +11,9 @@ const Header = ({ user }) => {
       </Link>
       <Navbar />
       {user ? (
-        <h3 className={Styles.userTitle}>UserName: {user}</h3>
+        <h3 className={Styles.userTitle}>
+          UserName: <br /> <span className={Styles.userName}>{user}</span>
+        </h3>
       ) : (
         <h3 className={Styles.userTitle}>UserName: No User</h3>
       )}

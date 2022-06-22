@@ -100,6 +100,7 @@ const ChatRoom = ({
         <p className={Styles.username}>Username: {user}</p>
         {choosenRooom ? (
           <button
+            className='buttonWarning'
             onClick={() => deleteRoom()}
             style={{
               marginBottom: "2vh",
