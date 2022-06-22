@@ -23,6 +23,14 @@
     font-family: 'Arvo', serif;
     text-decoration: underline;
 }
+.chooseRoomTitle{
+    font-family: 'Arvo', serif;
+    text-decoration: underline;
+    margin-left: 32vw;
+    margin-top: 10vh;
+    font-size: 4vw;
+    color: white;
+}
 .userTitle{ 
     margin-top: 1vh;
     margin-bottom: 2vh;

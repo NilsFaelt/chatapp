@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Styles from "./chatRoom.module.css";
 import io from "socket.io-client";
 import { getTime } from "../../timeFunc";
+import { useNavigate } from "react-router-dom";
 
 const socket = io.connect("http://localhost:4001/");
 
@@ -13,8 +14,8 @@ const ChatRoom = ({
   activate,
   activateTitle,
 }) => {
+  const navigate = useNavigate();
   const [recivedMessage, setRecivedMessage] = useState([]);
-  const [recivedFromUser, setRecivedFromUser] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [date, setDate] = useState();
   const [messageAlert, setMessageAlert] = useState(false);
@@ -29,6 +30,13 @@ const ChatRoom = ({
     } else if (!choosenRooom) {
       alert("you have to join room to send messages");
     } else {
+      const newMessage = {
+        message: messageInput,
+        room: choosenRooom,
+        user: user,
+        date: date,
+      };
+      setRecivedMessage([...recivedMessage, newMessage]);
       socket.emit("send_message", {
         message: messageInput,
         room: choosenRooom,
@@ -52,6 +60,7 @@ const ChatRoom = ({
     setRecivedMessage("");
     setChoosenRoom("");
     socket.emit("leave_room", { choosenRooom: choosenRooom, user: user });
+    navigate("/chatrooms");
     console.log("levaing");
   };
 
@@ -62,9 +71,11 @@ const ChatRoom = ({
     if (!confirmed) {
       return;
     }
+    navigate("/chatrooms");
     setChoosenRoom("");
     setRecivedMessage([]);
     socket.emit("delete_room", choosenRooom);
+    socket.emit("leave_room", { choosenRooom: choosenRooom, user: user });
     setActivate(!activate);
   };
 
@@ -112,11 +123,6 @@ const ChatRoom = ({
       <div className={Styles.messaegAndUserContainer}>
         <div className={Styles.messeageContainer}>
           <div className={Styles.displayMessage}>
-            {recivedFromUser ? (
-              <p className={Styles.fromUser}>{recivedFromUser} Says:</p>
-            ) : (
-              ""
-            )}
             {recivedMessage
               ? recivedMessage.map((message) => {
                   return (

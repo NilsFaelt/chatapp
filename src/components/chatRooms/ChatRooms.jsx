@@ -41,6 +41,13 @@ const ChatRooms = ({ user }) => {
     console.log(room, "join roooom");
 
     setChoosenRoom(room);
+    // socket.emit("send_message", {
+    //   message: "Welcome",
+    //   room: "roo2",
+    //   user: "Admin",
+    //   date: "",
+    // });
+    console.log(room);
   };
 
   if (!activateTitle) {
@@ -58,14 +65,18 @@ const ChatRooms = ({ user }) => {
 
   return (
     <main onMouseOver={updateRooms} className={Styles.container}>
-      <ChatRoom
-        activateTitle={activateTitle}
-        setActivate={setActivate}
-        activate={activate}
-        choosenRooom={choosenRooom}
-        user={user}
-        setChoosenRoom={setChoosenRoom}
-      />
+      {choosenRooom ? (
+        <ChatRoom
+          activateTitle={activateTitle}
+          setActivate={setActivate}
+          activate={activate}
+          choosenRooom={choosenRooom}
+          user={user}
+          setChoosenRoom={setChoosenRoom}
+        />
+      ) : (
+        <h2 className={Styles.chooseRoomTitle}>No room Choosen </h2>
+      )}
       <section className={Styles.chatRoomContainer}>
         <h3 className={Styles.roomsTitle}>Rooms</h3>
         <div className={Styles.rooms}>

@@ -14,7 +14,7 @@ const socket = io.connect("http://localhost:4001/");
 function App() {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/chatrooms");
+    navigate("/login");
   }, []);
   const [user, setUser] = useState("No name");
   return (
