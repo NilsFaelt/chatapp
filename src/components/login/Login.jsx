@@ -1,13 +1,18 @@
 import Styles from "./login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Login = ({ setUser, user }) => {
+  const navigate = useNavigate();
   const [userInput, setUserInput] = useState("");
 
   const loginUser = (e) => {
     e.preventDefault();
     setUser(userInput);
+    if (userInput !== "") {
+      navigate("/chatrooms");
+    }
     setUserInput("");
   };
 
@@ -19,6 +24,7 @@ const Login = ({ setUser, user }) => {
           LOGIN:
         </label>
         <input
+          autoFocus
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           className={Styles.input}

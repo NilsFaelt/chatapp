@@ -5,7 +5,6 @@ import io from "socket.io-client";
 import "./App.css";
 import ChatRooms from "./components/chatRooms/ChatRooms";
 import CreateUser from "./components/createuser/CreateUser";
-import Footer from "./components/footer/footer";
 import Header from "./components/header/Header";
 import Login from "./components/login/login";
 import Search from "./components/search/Search";

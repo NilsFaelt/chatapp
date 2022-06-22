@@ -10,6 +10,11 @@ const ChatRooms = ({ user }) => {
   const [rooms, setRoooms] = useState([]);
   const [activate, setActivate] = useState(false);
   const [activateTitle, setActivateTitle] = useState(true);
+  const [getThemRooms, setGetThemrooms] = useState(false);
+
+  const updateRooms = () => {
+    setGetThemrooms(!getThemRooms);
+  };
 
   const addRoom = () => {
     setActivate(!activate);
@@ -29,10 +34,12 @@ const ChatRooms = ({ user }) => {
       });
     }
   };
+
   const chooseRoom = (room) => {
     setActivateTitle(false);
     socket.emit("join_room", room);
     console.log(room, "join roooom");
+
     setChoosenRoom(room);
   };
 
@@ -47,10 +54,10 @@ const ChatRooms = ({ user }) => {
     socket.on("get_rooms", (data) => {
       setRoooms(data);
     });
-  }, [activate]);
+  }, [activate, getThemRooms]);
 
   return (
-    <main className={Styles.container}>
+    <main onMouseOver={updateRooms} className={Styles.container}>
       <ChatRoom
         activateTitle={activateTitle}
         setActivate={setActivate}
@@ -66,6 +73,7 @@ const ChatRooms = ({ user }) => {
             rooms.map((room) => {
               return (
                 <h4
+                  key={room.name}
                   onClick={() => chooseRoom(room.name)}
                   className={Styles.roomTitle}
                 >

@@ -70,12 +70,9 @@ const ChatRoom = ({
 
   useEffect(() => {
     socket.emit("join_room", { choosenRooom: choosenRooom, user: user });
-    console.log(choosenRooom);
     socket.on("recive_message", (data) => {
       setRecivedMessage(data);
-      setRecivedFromUser(data.user);
     });
-    console.log("insie effects");
   }, [socket, choosenRooom]);
 
   return (
@@ -123,7 +120,7 @@ const ChatRoom = ({
             {recivedMessage
               ? recivedMessage.map((message) => {
                   return (
-                    <div>
+                    <div key={message.date}>
                       <h3 className={Styles.sentFromUser}>
                         {message.user} says
                       </h3>
@@ -150,7 +147,6 @@ const ChatRoom = ({
       <button onClick={() => sendMessage()}>Send</button>
       <button
         onClick={() => leaveRoom()}
-        type='submit'
         style={{
           width: "8vw",
           height: "3vh",
