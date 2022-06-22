@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const socket = io.connect("http://localhost:4001/");
 
 const ChatRoom = ({
+  djungel,
   choosenRooom,
   user,
   setChoosenRoom,
@@ -93,7 +94,7 @@ const ChatRoom = ({
   }, [socket, choosenRooom, chooseRoom]);
 
   return (
-    <div className={Styles.container}>
+    <div className={djungel ? Styles.djungleContainer : Styles.container}>
       <div className={Styles.wrapperRoomAndTitle}>
         {choosenRooom ? (
           <h3 className={activateTitle ? Styles.title : Styles.alertTitle}>

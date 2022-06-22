@@ -11,6 +11,7 @@ const ChatRooms = ({ user }) => {
   const [activate, setActivate] = useState(false);
   const [activateTitle, setActivateTitle] = useState(true);
   const [getThemRooms, setGetThemrooms] = useState(false);
+  const [djungel, setDjungel] = useState(false);
 
   const updateRooms = () => {
     setGetThemrooms(!getThemRooms);
@@ -18,7 +19,12 @@ const ChatRooms = ({ user }) => {
 
   const addRoom = () => {
     setActivate(!activate);
+
     const room = prompt("Add roomname");
+    if (room === "jungel") {
+      setDjungel(true);
+      console.log("djungelboogie");
+    }
     const checkIfRoom = rooms.find(
       (existingRoom) => existingRoom.name === room
     );
@@ -57,9 +63,13 @@ const ChatRooms = ({ user }) => {
   }, [activate, getThemRooms]);
 
   return (
-    <main onMouseOver={updateRooms} className={Styles.container}>
+    <main
+      onMouseOver={updateRooms}
+      className={djungel ? Styles.djungelContainer : Styles.container}
+    >
       {choosenRooom ? (
         <ChatRoom
+          djungel={djungel}
           chooseRoom={chooseRoom}
           activateTitle={activateTitle}
           setActivate={setActivate}
