@@ -13,10 +13,11 @@
 }
 
 .chatRoomContainer{
+    position: absolute;
     display: flex;
     flex-direction: column;
     /* margin: 0 auto; */
-    margin-left: 8vw;
+    right: 2vw;
     margin-top: 5vh;
     width: 15vw;
     height: 75vh;
