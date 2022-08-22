@@ -6,7 +6,7 @@ import "./App.css";
 import ChatRooms from "./components/chatRooms/ChatRooms";
 import CreateUser from "./components/createuser/CreateUser";
 import Header from "./components/header/Header";
-import Login from "./components/login/login";
+import Login from "./components/login/Login";
 import Search from "./components/search/Search";
 
 const socket = io.connect("http://localhost:4001/");
