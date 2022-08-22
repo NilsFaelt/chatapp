@@ -2,6 +2,10 @@
   "name": "chatapp",
   "private": true,
   "version": "0.0.0",
+  "engines": {
+    "npm": "8.5.5",
+    "node": "v16.15.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
