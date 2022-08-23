@@ -12,6 +12,7 @@ import Search from "./components/search/Search";
 //url till backend
 const url = process.env.SERVER;
 const socket = io.connect(url);
+console.log(url);
 
 function App() {
   const navigate = useNavigate();
