@@ -32,7 +32,7 @@ const ChatRooms = ({ user }) => {
     );
     if (checkIfRoom) {
       alert("room already exists, choose different name");
-    } else if (room.length > 12 || room.length < 1) {
+    } else if (room?.length > 12 || room?.length < 1) {
       alert("name must be between 1 and  12 charachters, please try again");
     } else {
       socket.emit("join_room", room);
@@ -109,7 +109,7 @@ const ChatRooms = ({ user }) => {
           }}
           onClick={addRoom}
         >
-          Add new room
+          Add New ROOM
         </button>
       </section>
     </main>
