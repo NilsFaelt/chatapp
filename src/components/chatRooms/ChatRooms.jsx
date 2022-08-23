@@ -86,7 +86,7 @@ const ChatRooms = ({ user }) => {
       <section className={Styles.chatRoomContainer}>
         <h3 className={Styles.roomsTitle}>Rooms</h3>
         <div className={Styles.rooms}>
-          {rooms.length > 0 ? (
+          {rooms?.length > 0 ? (
             rooms.map((room) => {
               return (
                 <h4

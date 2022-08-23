@@ -132,7 +132,7 @@ const ChatRoom = ({
         <div className={Styles.messeageContainer}>
           <div className={Styles.displayMessage}>
             {recivedMessage
-              ? recivedMessage.map((message) => {
+              ? recivedMessage?.map((message) => {
                   return (
                     <div key={message.date}>
                       <h3 className={Styles.sentFromUser}>
