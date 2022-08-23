@@ -3,6 +3,7 @@ import ChatRoom from "../chatRoom/ChatRoom";
 import Styles from "./chatRooms.module.css";
 import io from "socket.io-client";
 const url = process.env.SERVER;
+console.log(url);
 
 const socket = io.connect(url);
 
@@ -108,7 +109,7 @@ const ChatRooms = ({ user }) => {
           }}
           onClick={addRoom}
         >
-          Add New Room
+          Add new room
         </button>
       </section>
     </main>
