@@ -9,7 +9,9 @@ import Header from "./components/header/Header";
 import Login from "./components/login/Login";
 import Search from "./components/search/Search";
 
-const socket = io.connect("http://localhost:4001/");
+//url till backend
+const url = "https://chat-app-server-cme.herokuapp.com/";
+const socket = io.connect(url);
 
 function App() {
   const navigate = useNavigate();
