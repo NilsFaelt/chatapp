@@ -107,7 +107,7 @@ const ChatRooms = ({ user }) => {
           }}
           onClick={addRoom}
         >
-          Add new room
+          Add New Room
         </button>
       </section>
     </main>
