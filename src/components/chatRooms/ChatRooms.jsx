@@ -27,7 +27,7 @@ const ChatRooms = ({ user }) => {
       setDjungel(true);
       console.log("djungelboogie");
     }
-    const checkIfRoom = rooms.find(
+    const checkIfRoom = rooms?.find(
       (existingRoom) => existingRoom.name === room
     );
     if (checkIfRoom) {
