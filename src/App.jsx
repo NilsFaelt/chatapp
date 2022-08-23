@@ -10,7 +10,7 @@ import Login from "./components/login/Login";
 import Search from "./components/search/Search";
 
 //url till backend
-const url = "https://chat-app-server-cme.herokuapp.com/";
+const url = process.env.SERVER;
 const socket = io.connect(url);
 
 function App() {
