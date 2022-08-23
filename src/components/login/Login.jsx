@@ -31,7 +31,7 @@ const Login = ({ setUser, user }) => {
           type='text'
         />
         <Link className={Styles.link} to={"/createuser"}>
-          Create user?
+          Create User?
         </Link>
         <button
           onClick={(e) => {
