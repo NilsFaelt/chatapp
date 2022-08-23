@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { getTime } from "../../timeFunc";
 import { useNavigate } from "react-router-dom";
 const url = process.env.SERVER;
-const socket = io.connect(url);
+const socket = io.connect("https://chat-app-server-cme.herokuapp.com/");
 
 const ChatRoom = ({
   djungel,

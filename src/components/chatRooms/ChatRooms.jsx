@@ -5,7 +5,7 @@ import io from "socket.io-client";
 const url = process.env.SERVER;
 console.log(url);
 
-const socket = io.connect(url);
+const socket = io.connect("https://chat-app-server-cme.herokuapp.com/");
 
 const ChatRooms = ({ user }) => {
   const [choosenRooom, setChoosenRoom] = useState("");
@@ -109,7 +109,7 @@ const ChatRooms = ({ user }) => {
           }}
           onClick={addRoom}
         >
-          Add New Room
+          Add new room
         </button>
       </section>
     </main>
