@@ -3,8 +3,8 @@ import Styles from "./chatRoom.module.css";
 import io from "socket.io-client";
 import { getTime } from "../../timeFunc";
 import { useNavigate } from "react-router-dom";
-
-const socket = io.connect("http://localhost:4001/");
+const url = process.env.SERVER;
+const socket = io.connect(url);
 
 const ChatRoom = ({
   djungel,

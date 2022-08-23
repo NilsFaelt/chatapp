@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import ChatRoom from "../chatRoom/ChatRoom";
 import Styles from "./chatRooms.module.css";
 import io from "socket.io-client";
+const url = process.env.SERVER;
 
-const socket = io.connect("http://localhost:4001/");
+const socket = io.connect(url);
 
 const ChatRooms = ({ user }) => {
   const [choosenRooom, setChoosenRoom] = useState("");
