@@ -136,7 +136,7 @@ const ChatRoom = ({
                   return (
                     <div key={message.date}>
                       <h3 className={Styles.sentFromUser}>
-                        {message.user} says
+                        {message.name} says
                       </h3>
                       <h3 className={Styles.tex}>{message.message}</h3>
                       <p className={Styles.date}>{message.date}</p>
